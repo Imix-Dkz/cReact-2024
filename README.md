@@ -5,7 +5,7 @@ Este proyecto es parte de el curso:
 * La playlist de todo el proyecto es: [Curso React 2024](https://www.youtube.com/playlist?list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29)
 * Para refrerencias extra, se consultará la siguiente Documentación... [Wiki](https://www.reactjs.wiki)
 
-## 00-TwitterFollow
+## 01-TwitterFollow
 Esté proyecto comienza con una adaptación de la interfaz de followers de twitter
 * [CURSO REACT 2024 - Aprende desde cero](https://www.youtube.com/watch?v=7iobxzd_2wY)
 * En esté capítulo se ven los conceptos de:
@@ -15,7 +15,7 @@ Esté proyecto comienza con una adaptación de la interfaz de followers de twitt
   + Pase de parametros, PROPS
   + Introducción a "useState"/ hooks
 
-## 01-Gato-TicTacToe
+## 02-Gato-TicTacToe
 En este capítulo se creará un simple juego de GATO, con el que se validarán estados y funcionalidades de interfaz, así como algunos avisos en pantalla
 * [Curso de React desde cero: Crea un videojuego y una aplicación para aprender useState y useEffect
 ](https://www.youtube.com/watch?v=qkzcjwnueLA)
