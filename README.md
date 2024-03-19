@@ -16,6 +16,10 @@ Esté proyecto comienza con una adaptación de la interfaz de followers de twitt
   + Introducción a "useState"/ hooks
 
 ## 01-Gato-TicTacToe
+En este capítulo se creará un simple juego de GATO, con el que se validarán estados y funcionalidades de interfaz, así como algunos avisos en pantalla
+* [Curso de React desde cero: Crea un videojuego y una aplicación para aprender useState y useEffect
+](https://www.youtube.com/watch?v=qkzcjwnueLA)
+
 
 # React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
