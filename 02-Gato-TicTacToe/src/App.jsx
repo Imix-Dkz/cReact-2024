@@ -1,28 +1,14 @@
 import { useState } from 'react'
 import confetti from 'canvas-confetti'
 
+import { Square } from './components/Square'
+
 import './App.css'
 
 //1ro, hay que definir los turnos del juego...
 const TURNS = {
   X: 'x',
   O: 'o'
-}
-
-//3ro se definen las propiedades del cuadrado...
-const Square = ({ children, isSelected, updateBoard, index }) => {
-  //Aqui se define una "className" se activará si un cuadro está seleccionado o no 
-  const className = `square ${isSelected ? 'is-selected' : '' }`
-  //5.1, Se añade control de los clicks en el tablero
-  const handleClick = () => {
-    updateBoard();
-  }
-
-  return(
-    <div onClick={handleClick} className={className}>
-      {children}
-    </div>
-  );
 }
 
 //Arreglo de condiciones ganadoras
@@ -90,7 +76,7 @@ function App() {
       const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X ;
       setTurn(newTurn);
 
-      //Revisar si hay ganador...
+      //Revisar sigit hay ganador...
       const newWinner = checkWinner(newBoard);
       if(newWinner){ 
         confetti();
