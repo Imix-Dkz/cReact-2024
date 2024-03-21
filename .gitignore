@@ -48,3 +48,6 @@
 02-Gato-TicTacToe/*.njsproj
 02-Gato-TicTacToe/*.sln
 02-Gato-TicTacToe/*.sw?
+
+#Workspace
+cReact-2024.code-workspace

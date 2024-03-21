@@ -19,6 +19,8 @@ Esté proyecto comienza con una adaptación de la interfaz de followers de twitt
 En este capítulo se creará un simple juego de GATO, con el que se validarán estados y funcionalidades de interfaz, así como algunos avisos en pantalla
 * [Curso de React desde cero: Crea un videojuego y una aplicación para aprender useState y useEffect
 ](https://www.youtube.com/watch?v=qkzcjwnueLA)
+* Este ejercico tiene en consireación muchas funciones de REACT
+* Asi como la logica de programación
 
 
 # React + Vite
