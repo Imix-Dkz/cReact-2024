@@ -6,6 +6,7 @@ import { WinnerModal } from './components/WinnerModal.jsx'
 
 import { TURNS } from './constants.js'
 import { checkWinnerFrom, checkEndGame } from './logic/board.js'
+import { saveGameToStorage, resetGameStorage } from './logic/storage/index.js'
 
 import './App.css'
 
@@ -36,9 +37,7 @@ function App() {
       setTurn(TURNS.X);
       setWinner(null);
 
-      //Tambien hay que reiniciar los valores del tablero
-      window.localStorage.removeItem('board');
-      window.localStorage.removeItem('turn');
+      resetGameStorage(); //Se reinicia partida
     }
 
   //5to, Se genera la función con la que se actualizará el tablero
@@ -55,9 +54,7 @@ function App() {
       const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X ;
       setTurn(newTurn);
 
-      //Guardar partida... Se convierte el arreglo en un JSON
-      window.localStorage.setItem('board', JSON.stringify(newBoard));
-      window.localStorage.setItem('turn', newTurn); //Hay que guardar el nuevo turno o es BUG
+      saveGameToStorage({ board:newBoard, turn:newTurn }); //Se guarda Partida
 
       //Revisar sig hay ganador...
       const newWinner = checkWinnerFrom(newBoard);

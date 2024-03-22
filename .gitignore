@@ -4,6 +4,7 @@
 02-Gato-TicTacToe/.gitignore
 
 #NodeModules+dist
+node_modules/
 01-TwitterFollow/node_modules
 01-TwitterFollow/dist
 01-TwitterFollow/dist-ssr
