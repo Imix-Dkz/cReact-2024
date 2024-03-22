@@ -1,66 +1,45 @@
 import { useState } from 'react'
 import confetti from 'canvas-confetti'
 
-import { Square } from './components/Square'
+import { Square } from './components/Square.jsx'
+import { WinnerModal } from './components/WinnerModal.jsx'
+
+import { TURNS } from './constants.js'
+import { checkWinnerFrom, checkEndGame } from './logic/board.js'
 
 import './App.css'
 
-//1ro, hay que definir los turnos del juego...
-const TURNS = {
-  X: 'x',
-  O: 'o'
-}
-
-//Arreglo de condiciones ganadoras
-const WINNER_COMBOS = [
-  //Horizontales
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  //Verticales
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  //Diagonales
-  [0,4,8],
-  [2,4,6]
-];
-
 function App() {
-  //2do, se define un tablero..., Se movio de más arriba
-    //const board = Array(9).fill(null);
-    const [board, setBoard] = useState( Array(9).fill(null) ); //Se cambio a un tablero de estados
-    //const [board, setBoard] = useState(['x','x','x','o','o','o','x','o','x']); //Se Inicializa
-    //console.log(board)
+  //2do, se define un tablero..., Se añade lectura de datos fromStorage
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem('board');
+    return ( (boardFromStorage) ? JSON.parse(boardFromStorage) : Array(9).fill(null) );
+  }); //console.log(board)
   //4to, Se define el control de turnos con estados
-    const [turn, setTurn] = useState(TURNS.X);
+    const [turn, setTurn] = useState(()=>{
+      const turnFromStorage = window.localStorage.getItem('turn');
+      /* //Cuando en validador ternareo se usa un doble "??",
+        se indica que si se cumple digamos, la variable condicional(TRUE/FALSE),
+        se regrese la variable condicional,
+        en caso contrario, se regresa lo que está despues del doble "??",
+        en este caso se manda el valor por defecto de los turnos
+      */
+      return (turnFromStorage ?? TURNS.X );
+    });
     
     //7mo, Se define un estado Ganador
     const [winner, setWinner] = useState(null);
-    const checkWinner = (boardToCheck) =>{
-      for(const combo of WINNER_COMBOS){
-        const [a,b,c] = combo
-        if(
-          boardToCheck[a] && //0 -> X ú O
-          boardToCheck[a] === boardToCheck[b] &&
-          boardToCheck[a] === boardToCheck[c]
-        ){ return boardToCheck[a]; } //Regresa la variable ganadora
-      }
-      //Si no hay ganador
-      return null;
-    }
 
   //8vo Reset Game
-    const resetGame = () =>{
+    const resetGame = () => {
       setBoard(Array(9).fill(null));
       setTurn(TURNS.X);
       setWinner(null);
-    }
 
-  //9no Fin del Juego
-    const checkEndGame = (newBoard) =>{
-      return newBoard.every((square) => square !== null );
-    } 
+      //Tambien hay que reiniciar los valores del tablero
+      window.localStorage.removeItem('board');
+      window.localStorage.removeItem('turn');
+    }
 
   //5to, Se genera la función con la que se actualizará el tablero
     const updateBoard = (index) =>{
@@ -76,13 +55,16 @@ function App() {
       const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X ;
       setTurn(newTurn);
 
-      //Revisar sigit hay ganador...
-      const newWinner = checkWinner(newBoard);
+      //Guardar partida... Se convierte el arreglo en un JSON
+      window.localStorage.setItem('board', JSON.stringify(newBoard));
+      window.localStorage.setItem('turn', newTurn); //Hay que guardar el nuevo turno o es BUG
+
+      //Revisar sig hay ganador...
+      const newWinner = checkWinnerFrom(newBoard);
       if(newWinner){ 
         confetti();
         setWinner(newWinner);
-       //alert(`El ganador es: ${newWinner}`);
-      } else if(checkWinner(newBoard)){
+      } else if(checkEndGame(newBoard)){
         setWinner(false); //Empate
       }
     }
@@ -90,7 +72,7 @@ function App() {
   return (
     <main className='board'>
       <h1>Gato / 3 en Raya...</h1>
-      <button className={resetGame}>Reiniciar Juego</button>
+      <button onClick={resetGame}>Reiniciar Juego</button>
       <section className="game">
         { 
           board.map((square, index) =>{
@@ -114,23 +96,7 @@ function App() {
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
 
-      { //Renderizado DINAMICO ó Condicional
-        winner !== null && (
-          <section className="winner">
-            <div className="text">
-              <h2>{ winner === false ? 'Empate' : 'Ganó:' }</h2>
-              
-              <header>
-                {winner && <Square>{winner}</Square>}
-              </header>
-
-              <footer>
-                <button onClick={resetGame}>Empezar de nuevo</button>
-              </footer>
-            </div>
-          </section>
-        )
-      }
+      <WinnerModal resetGame={resetGame} winner={winner} />
     </main>
   );
 }

@@ -6,7 +6,7 @@ export const Square = ({ children, isSelected, updateBoard, index }) => {
     //5.1, Se añade control de los clicks en el tablero
     const handleClick = () => {
       updateBoard(index);
-      //Error Corregido, no se mandaba el INDEX de actualización de celda...
+      //8449939~ ERROR FIX: no se mandaba el INDEX de actualización de celda...
     }
   
     return(

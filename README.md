@@ -20,7 +20,9 @@ En este capítulo se creará un simple juego de GATO, con el que se validarán e
 * [Curso de React desde cero: Crea un videojuego y una aplicación para aprender useState y useEffect
 ](https://www.youtube.com/watch?v=qkzcjwnueLA)
 * Este ejercico tiene en consireación muchas funciones de REACT
-* Asi como la logica de programación
+* Asi como la logica de programación para definición de resultados...
+  + 134958f (HEAD -> master) Se corrige App.jsx, Square no mandaba el index en handleClick()=>{updateBoard(index);}
+  + 8449939 Se termina el juego, por ahora no funciona, pero se irá adecuando a componentes
 
 
 # React + Vite
