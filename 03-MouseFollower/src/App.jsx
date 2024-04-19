@@ -4,6 +4,7 @@ const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false);
   const [position, setPosition] = useState({x:0, y:0});
 
+  //PointerMove, hace seguimiento del cursor
   useEffect(()=>{
     console.log('effect', {enabled});
 
@@ -15,8 +16,20 @@ const FollowMouse = () => {
 
     if(enabled){ window.addEventListener('pointermove', handleMove); }
     
-    //Cleaner... Para cuando el componente se desmonta o cambian las dependencias
+    //cleanup Method... Para cuando el componente se desmonta o cambian las dependencias
     return ()=>{ window.removeEventListener('pointermove', handleMove); }
+  }, [enabled]);
+
+  /* //PointerDisable, changeBodyClass, desactivará el cursor...
+    [] -> Sólo se ejecuta una vez cuando se monta el componente
+    [enabled] -> se ejecuta cuando cambia y cuando se monta el componente
+    undefined -> se ejecuta cada vez que se renderiz el componente
+  */    
+  useEffect(()=>{
+    document.body.classList.toggle('no-cursor', enabled);
+
+    //cleanup Method...
+    return ()=> { document.body.classList.remove('no-cursor'); }
   }, [enabled]);
 
   return (<>
@@ -37,11 +50,12 @@ const FollowMouse = () => {
 }
 
 function App() {
-  const [mounted, setMounted] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   return(
     <main>
       { mounted && <FollowMouse/> }
+      <br/>
       <button onClick={()=> setMounted(!mounted)}>
         Toggle Moutend FollowMouse Component
       </button>      
