@@ -33,6 +33,10 @@ En este capítulo se creará un simple juego de GATO, con el que se validarán e
   + 
 
 ## 03-MouseFollower
+  + Este ejercicio tiene inteción de mostrar un uso sencillo del "useEffect"
+  + Se dará seguimiento al puntero del ratón
+  + Tambien se hace notar la importancia de LIMPIAR/CLEAN los useEffect, con un
+  + >   return ()=>{}
 
 # React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
