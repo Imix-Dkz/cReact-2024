@@ -1,54 +1,33 @@
 #GitIgnores
 #.gitignore
-01-TwitterFollow/.gitignore
-02-Gato-TicTacToe/.gitignore
+*/.gitignore
 
 #NodeModules+dist
 node_modules/
-01-TwitterFollow/node_modules
-01-TwitterFollow/dist
-01-TwitterFollow/dist-ssr
-01-TwitterFollow/*.local
-02-Gato-TicTacToe/node_modules
-02-Gato-TicTacToe/dist
-02-Gato-TicTacToe/dist-ssr
-02-Gato-TicTacToe/*.local
+*/node_modules
+*/dist
+*/dist-ssr
+*/*.local
 
 # Logs
-01-TwitterFollow/logs
-01-TwitterFollow/*.log
-01-TwitterFollow/npm-debug.log*
-01-TwitterFollow/yarn-debug.log*
-01-TwitterFollow/yarn-error.log*
-01-TwitterFollow/pnpm-debug.log*
-01-TwitterFollow/lerna-debug.log*
-02-Gato-TicTacToe/logs
-02-Gato-TicTacToe/*.log
-02-Gato-TicTacToe/npm-debug.log*
-02-Gato-TicTacToe/yarn-debug.log*
-02-Gato-TicTacToe/yarn-error.log*
-02-Gato-TicTacToe/pnpm-debug.log*
-02-Gato-TicTacToe/lerna-debug.log*
+*/logs
+*/*.log
+*/npm-debug.log*
+*/yarn-debug.log*
+*/yarn-error.log*
+*/pnpm-debug.log*
+*/lerna-debug.log*
 
 # Editor directories and files
-01-TwitterFollow/.vscode/*
-01-TwitterFollow/!.vscode/extensions.json
-01-TwitterFollow/.idea
-01-TwitterFollow/.DS_Store
-01-TwitterFollow/*.suo
-01-TwitterFollow/*.ntvs*
-01-TwitterFollow/*.njsproj
-01-TwitterFollow/*.sln
-01-TwitterFollow/*.sw?
-02-Gato-TicTacToe/.vscode/*
-02-Gato-TicTacToe/!.vscode/extensions.json
-02-Gato-TicTacToe/.idea
-02-Gato-TicTacToe/.DS_Store
-02-Gato-TicTacToe/*.suo
-02-Gato-TicTacToe/*.ntvs*
-02-Gato-TicTacToe/*.njsproj
-02-Gato-TicTacToe/*.sln
-02-Gato-TicTacToe/*.sw?
+*/.vscode/*
+*/!.vscode/extensions.json
+*/.idea
+*/.DS_Store
+*/*.suo
+*/*.ntvs*
+*/*.njsproj
+*/*.sln
+*/*.sw?
 
 #Workspace
 cReact-2024.code-workspace

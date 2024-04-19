@@ -4,6 +4,10 @@ Este proyecto es parte de el curso:
 * Del canal **midulive**
 * La playlist de todo el proyecto es: [Curso React 2024](https://www.youtube.com/playlist?list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29)
 * Para refrerencias extra, se consultará la siguiente Documentación... [Wiki](https://www.reactjs.wiki)
+* Contenuido del Proyecto
+  + [01-TwitterFollow](#01-twitterfollow)
+  + [02-Gato-TicTacToe](#02-gato-tictactoe)
+  + [03-MouseFollower](#03-mousefollower)
 
 ## 01-TwitterFollow
 Esté proyecto comienza con una adaptación de la interfaz de followers de twitter
@@ -23,7 +27,12 @@ En este capítulo se creará un simple juego de GATO, con el que se validarán e
 * Asi como la logica de programación para definición de resultados...
   + 134958f (HEAD -> master) Se corrige App.jsx, Square no mandaba el index en handleClick()=>{updateBoard(index);}
   + 8449939 Se termina el juego, por ahora no funciona, pero se irá adecuando a componentes
+* Notas de HOOKS, react tiene distintos tipos de controladores de estados
+  + useState(), es el más usado y sirve para ver el estado de operacion de un componente o variable
+  + useEffect(), es un Hook, que nos permite ejecutar código arbitrario, cuando el componente se monta en el DOM y cambian las dependencias que nosotros le decimos...
+  + 
 
+## 03-MouseFollower
 
 # React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
