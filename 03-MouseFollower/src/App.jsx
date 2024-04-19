@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react"
 
+function debounce(func, delay) {
+  let timer;
+  return function(...args){
+    clearTimeout(timer);
+    timer = setTimeout(()=> func.apply(this, args), delay);
+  }  
+}
+
 const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false);
   const [position, setPosition] = useState({x:0, y:0});
@@ -14,7 +22,13 @@ const FollowMouse = () => {
       setPosition({ x: clientX, y: clientY});
     }
 
-    if(enabled){ window.addEventListener('pointermove', handleMove); }
+    if(enabled){
+      //window.addEventListener('pointermove', handleMove);
+      //Aqui se buscaria agregar un retardo del evento
+      window.addEventListener('pointermove', 
+        debounce( handleMove, 10)
+      );
+    }
     
     //cleanup Method... Para cuando el componente se desmonta o cambian las dependencias
     return ()=>{ window.removeEventListener('pointermove', handleMove); }
