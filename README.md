@@ -46,6 +46,7 @@ En este capítulo se creará un simple juego de GATO, con el que se validarán e
     - [CORREGIDO], usando LAS PRIMERAS 3 PALABRAS DEL ECHO
     - API(a): htpps://catfact.ninja/fact
     - API(b): htpps://cataas.com/cat/says/hello
+    - [NOTA]: La API Cambio, con respecto a lo mostrado en el video, por lo que requiere ajustes
   + Implica el uso de estados dependiendo de otro
   + El detalle completo del origén de este proyecto se puede ver en desde aquí:[Prueba Técnica](https://www.youtube.com/watch?v=XYpadB4VadY&list=PLUofhDIg_38q4D0xNWp7FEHOTcZhjWJ29&index=6)
   + Este Proyecto comenzo con un proyecto MINIMO( Vanilla ), para ver como crece y se va armando desde CERO
