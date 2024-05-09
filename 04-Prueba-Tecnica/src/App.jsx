@@ -25,8 +25,15 @@ export function App(){
     const [imgUrl, setImgUrl] = useState() //La URL de la imagen ya no funciona igual que antes
     //const [imgId, setImgId] = useState()
 
+    //Se añade loading IMG
+    const [loading, setLoading] = useState(false)
+
     //Se aisla la consulta a la API, pára optimización de código
     const getRandomFact = () => {
+
+        setLoading(true); //Se activa el loader
+        //await delay(1000);
+
         fetch(apiA_Url) //ENDPOINT_RANDOM_FACT_CAT
             .then(response => response.json())
             //.then(data => setFact(data.fact)) //Se cambia para obtener la primera palabra
@@ -34,6 +41,8 @@ export function App(){
                 const {fact} = data;
                 setFact(fact);
             })
+
+        setLoading(false); //Se desactiva el loader
     }
 
     //La forma adecuada de hacer un FETCHING de datos es con un useEffect, para evitar un renderizado infinito
@@ -73,8 +82,14 @@ export function App(){
         <main style={{ display: 'flex', flexDirection: 'column'}}>
             <h1>App de Gatitos</h1>
             <button onClick={handleClick}>Get new fact</button>
-            {fact && <p>{fact}</p>}
-            {imgUrl && <img src={`${imgUrl}`} alt={`img Extract from first 3 word of: ${fact}`}/>}
+            {!loading &&
+                <p style={{ textAlign: 'center'}}>
+                    { fact && <p>{fact}</p>}
+                    { imgUrl && <img src={`${imgUrl}`} alt={`img Extract from first 3 word of: ${fact}`}/>}
+                </p>
+            }
+            {loading && <p>Loading...</p>}
+            
         </main>
     );
 }
